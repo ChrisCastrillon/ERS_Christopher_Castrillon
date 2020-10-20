@@ -37,6 +37,7 @@ public class ReimbursementDelegate implements Delegate {
         BufferedReader reader = request.getReader();
         String body = reader.lines().collect(Collectors.joining(System.lineSeparator()));
         ReimbursementTemplate rt = om.readValue(body, ReimbursementTemplate.class);
+        Reimbursement r = reimbursementService.submitReimbursement(rt);
         List<Reimbursement> reimbursements = reimbursementService.getAllReimbursements(currentUser.getId());
         ResponseUtil.writeJSON(response, reimbursements);
     }

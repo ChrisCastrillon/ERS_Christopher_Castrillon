@@ -181,8 +181,7 @@
             // Append a text node to the cell
             let newEID = document.createTextNode(reimbursementData.author);
             let newReimbID = document.createTextNode(reimbursementData.reimbId);
-            // let newSubmit = document.createTextNode(new Date(reimbursementData.submitTimeStamp).toISOString());
-            let newSubmit = document.createTextNode(reimbursementData.submitTimeStamp);
+            let newSubmit = document.createTextNode(new Date(reimbursementData.submitTimeStamp).toISOString());
             let newType = document.createTextNode(reimbursementData.type);
             let newAmount = document.createTextNode(reimbursementData.reimbAmount);
             let newDescription = document.createTextNode(reimbursementData.description);
