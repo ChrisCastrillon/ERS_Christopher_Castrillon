@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<title>First Page</title>
+</head>
+<body>
+	<div class="jumbotron text-center"
+		style="background-color: #ffce2b; border-bottom: 5px solid #f2f2f2;">
+		<h1 style="color: white; font-size: 45px;">Employee Reimbursement
+			System</h1>
+	</div>
+
+	<div class="section-1-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-10 offset-1 col-lg-8 offset-lg-2 d-flex justify-content-centeralign-items-center">
+					<div class="div-to-align">
+						<p>Login to enter either the user portal or the financial manager.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div
+					class="col-10 offset-1 col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
+					<div class="div-to-align">
+						<form class="form-vertical" role="form" onsubmit="return false;">
+							<div class="form-group">
+								<label class="sr-only" for="username">username</label> <input
+									type="text" class="form-control" name="username" id="username"
+									placeholder="Username">
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="password">password</label> <input
+									type="password" class="form-control" name="password"
+									id="password" placeholder="Password">
+							</div>
+							<button type="submit" class="btn btn-default" id="login">Login</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		let button = document.getElementById("login");
+		button.addEventListener("click", sendLogin);
+		
+		async function sendLogin() {
+
+			let usernameInput = document.getElementById("username").value;
+			let passwordInput = document.getElementById("password").value;
+			console.log(usernameInput);
+			console.log(passwordInput);
+			
+			let loginData = JSON.stringify({"username": usernameInput,"password": passwordInput});
+			//send a request to the server to log int
+			console.log("inside of the function");
+			try {
+				console.log("attempting to send a request");
+				// let response = await fetch("http://localhost:8080/Project_1_Christopher_Castrillon/login?"
+				// 		+ "username="
+				// 		+ usernameInput.value
+				// 		+ "&password="
+				// 		+ passwordInput.value);
+				let response = await fetch("http://localhost:8080/ERS_Christopher_Castrillon/login", {
+					body: loginData,
+					method: 'POST',
+					headers: { "Content-Type": "application/json" },
+					credentials: 'include'
+				});
+				let employee = await response.json();
+				//console.log(response)
+				console.log("data : " + JSON.stringify(employee));
+				sessionStorage.setItem("currentUser", employee.username);
+				console.log("current user is : " + sessionStorage.currentUser);
+				
+				if(employee.role.name === "employee") {
+					window.location.assign("http://localhost:8080/ERS_Christopher_Castrillon/submissions");
+				}
+				else if(employee.role.name ==="finance manager") {
+					window.location.assign("http://localhost:8080/ERS_Christopher_Castrillon/administator-portal");
+				}
+				//or window.location.href = "htp://localhost:8080/Project_1_Christopher_Castrillon/Submissions""
+												//this used to be response
+
+			} catch (error) {
+				//failed to login
+				console.log("the error is: " + error);
+				alert("Failed to log in");
+				
+			}
+		}
+
+	</script>
+</body>
+
+</html>
