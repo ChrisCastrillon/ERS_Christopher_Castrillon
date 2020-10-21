@@ -38,7 +38,7 @@ public class RequestDispatcher {
             System.out.println("submissions has been retrieved");
         });
         delegateMap.put("administrator-portal", (req, resp) -> {
-            req.getRequestDispatcher("/static/administrator_portal.html").forward(req, resp);
+            req.getRequestDispatcher("/static/administrator-portal.html").forward(req, resp);
         });
     }
     public Delegate dispatch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
