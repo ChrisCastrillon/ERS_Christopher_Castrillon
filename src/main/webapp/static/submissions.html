@@ -97,11 +97,15 @@
         
         let currentUser = sessionStorage.getItem("currentUser");
         let viewPastReimbursementsButton = document.getElementById("ViewPastReimbursements");
-        viewPastReimbursementsButton.addEventListener("click", getAllReimbursements(currentUser));   
+        // viewPastReimbursementsButton.addEventListener("click", getAllReimbursements(currentUser));   
         let button = document.getElementById("submitForm");
         button.addEventListener("click", submit);
         let logoutButton = document.getElementById("logout");
         logoutButton.addEventListener("click", logout);
+
+        viewPastReimbursementsButton.addEventListener("click", function(){
+            getAllReimbursements(currentUser);
+            ;});
         
         
         if (!currentUser) {
@@ -188,10 +192,40 @@
             
             let tableRef = document.getElementById("Reimbursements").getElementsByTagName('tbody')[0];
             let newRow = tableRef.insertRow(tableRef.rows.length);
-            
+            let reimbType;
+			// console.log(typeof item.type)
+			switch(reimbursementData.type) {
+				case 1:
+					reimbType = "travel";
+					break;
+				case 2:
+					reimbType = "lodging";
+					break;
+				case 3:
+					reimbType = "food";
+					break;
+				case 4:
+					reimbType = "other";
+					break
+			}
+			let statusType;
+            switch(reimbursementData.statusId) {
+                case 1:
+                    statusType = "pending";
+                    break;
+                case 2:
+                    statusType = "approved";
+                    break;
+                case 3:
+                    statusType = "denied";
+                    break;
+            }
 
             // Insert a cell in the row at index 0
-
+            let newStatusCell;
+            let newStatus;
+            let newResolvedCell;
+            let newResolved;
             let newEIDCell = newRow.insertCell(0);
             let newReimbIDCell = newRow.insertCell(1);
             let newSubmittedCell = newRow.insertCell(2);
@@ -199,8 +233,37 @@
             let newAmountCell = newRow.insertCell(4);
             let newDescriptionCell = newRow.insertCell(5);
             let newReceiptCell = newRow.insertCell(6);
-            let newStatusCell = newRow.insertCell(7);
-            let newResolvedCell = newRow.insertCell(8);
+            switch(reimbursementData.statusId){
+				case 1:
+				newStatusCell = newRow.insertCell(7);
+				newStatus = document.createTextNode(statusType);
+				newStatusCell.appendChild(newStatus);
+				break;
+				case 2:
+				newStatusCell = newRow.insertCell(7);
+				newStatus = document.createTextNode("approved");
+				newStatusCell.appendChild(newStatus);
+				break;
+				case 3:
+				newStatusCell = newRow.insertCell(7);
+				newStatus = document.createTextNode("denied");
+				newStatusCell.appendChild(newStatus);
+				break;
+			}
+			switch(reimbursementData.resolveTimeStamp){
+				case null:
+				newResolvedCell = newRow.insertCell(8);
+				newResolved = document.createTextNode("NOT RESOLVED");
+				newResolvedCell.appendChild(newResolved);
+
+				break;
+				default:
+				newResolvedCell = newRow.insertCell(8);
+				newResolved = document.createTextNode(new Date(reimbursementData.resolveTimeStamp).toISOString());
+				newResolvedCell.appendChild(newResolved);
+			}     
+            // let newStatusCell = newRow.insertCell(7);
+            // let newResolvedCell = newRow.insertCell(8);
             let newResolverIDCell = newRow.insertCell(9); 
 
             // Append a text node to the cell
@@ -208,11 +271,11 @@
             let newReimbID = document.createTextNode(reimbursementData.reimbId);
             let newSubmit = document.createTextNode(new Date(reimbursementData.submitTimeStamp).toISOString());
             let newType = document.createTextNode(reimbursementData.type);
-            let newAmount = document.createTextNode(reimbursementData.reimbAmount);
+            let newAmount = document.createTextNode("$"+reimbursementData.reimbAmount);
             let newDescription = document.createTextNode(reimbursementData.description);
             let newReceipt = document.createTextNode("receipt");
-            let newStatus = document.createTextNode(reimbursementData.statusId);
-            let newResolved = document.createTextNode(reimbursementData.resolveTimeStamp);
+            // let newStatus = document.createTextNode(reimbursementData.statusId);
+            // let newResolved = document.createTextNode(new Date(reimbursementData.resolveTimeStamp).toISOString());
             let newResolverID = document.createTextNode(reimbursementData.resolver);
             // let statusSelector = document.getElementById('status');
             
