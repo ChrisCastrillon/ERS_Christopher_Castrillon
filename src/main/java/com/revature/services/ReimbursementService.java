@@ -39,9 +39,9 @@ public class ReimbursementService {
         System.out.println("all of the reimbursements" + allReimbursements);
         return allReimbursements;
     }
-    public Reimbursement getReimbursement(ReimbursementTemplate rt) {
-//        Reimbursement r = ReimbursementDAO.findByAuthor();
-        return null;
+    public List<Reimbursement> getAllReimbursements() {
+        List<Reimbursement> allReimbursementsForAllEmployees = reimbursementDAO.findAll();
+        return allReimbursementsForAllEmployees;
     }
     public Reimbursement submitReimbursement(ReimbursementTemplate rt) {
         Reimbursement r = reimbursementFormToReimbursement(rt);

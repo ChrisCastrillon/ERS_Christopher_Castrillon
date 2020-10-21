@@ -63,11 +63,6 @@
 			console.log("inside of the function");
 			try {
 				console.log("attempting to send a request");
-				// let response = await fetch("http://localhost:8080/Project_1_Christopher_Castrillon/login?"
-				// 		+ "username="
-				// 		+ usernameInput.value
-				// 		+ "&password="
-				// 		+ passwordInput.value);
 				let response = await fetch("http://localhost:8080/ERS_Christopher_Castrillon/login", {
 					body: loginData,
 					method: 'POST',
@@ -84,7 +79,7 @@
 					window.location.assign("http://localhost:8080/ERS_Christopher_Castrillon/submissions");
 				}
 				else if(employee.role.name ==="finance manager") {
-					window.location.assign("http://localhost:8080/ERS_Christopher_Castrillon/administator-portal");
+					window.location.assign("http://localhost:8080/ERS_Christopher_Castrillon/administrator-portal");
 				}
 				//or window.location.href = "htp://localhost:8080/Project_1_Christopher_Castrillon/Submissions""
 												//this used to be response

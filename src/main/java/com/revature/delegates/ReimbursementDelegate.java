@@ -76,14 +76,16 @@ public class ReimbursementDelegate implements Delegate {
     }
     private void handleGroup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         switch(request.getMethod()) {
-        case "POST": {
-            BufferedReader reader = request.getReader();
-            String body = reader.lines().collect(Collectors.joining(System.lineSeparator()));
+        case "GET":
+            List<Reimbursement> allReimbursements = reimbursementService.getAllReimbursements();
+            ResponseUtil.writeJSON(response, allReimbursements);
+        case "POST": 
+            String body = RequestUtil.readBody(request);
             ReimbursementTemplate rt = om.readValue(body, ReimbursementTemplate.class);
             Reimbursement r = reimbursementService.submitReimbursement(rt);
             ResponseUtil.writeJSON(response, r);
             break;
-        }
+        
         default:
             response.sendError(401);
             break;

@@ -10,7 +10,7 @@ public class RequestUtil {
     
     public static String readBody(HttpServletRequest req) throws IOException {
         BufferedReader reader = req.getReader();
-        String body = reader.lines().collect(Collectors.joining());
+        String body = reader.lines().collect(Collectors.joining(System.lineSeparator()));
         return body;
     }
 

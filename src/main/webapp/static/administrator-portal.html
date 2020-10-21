@@ -60,7 +60,7 @@
 			
 			try {
 				console.log("attemping to send get request");
-				let response = await fetch("http://localhost:8080/Project_1_Christopher_Castrillon/rest/reimbursements");
+				let response = await fetch("http://localhost:8080/ERS_Christopher_Castrillon/reimbursements");
 
 				let reimbList = await response.json();
 				iterateReimbs(reimbList);
@@ -306,7 +306,7 @@
             )
             console.log(formData);
             try {
-                let response = await fetch("http://localhost:8080/Project_1_Christopher_Castrillon/rest/reimbursements", {
+                let response = await fetch("http://localhost:8080/ERS_Christopher_Castrillon/reimbursements", {
                     body: formData,
                     method: 'PUT',
                     headers: { "Content-Type": "application/json" },
