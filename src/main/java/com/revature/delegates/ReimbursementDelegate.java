@@ -15,6 +15,7 @@ import com.revature.models.Employee;
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimbursementService;
 import com.revature.templates.ReimbursementTemplate;
+import com.revature.util.RequestUtil;
 import com.revature.util.ResponseUtil;
 
 public class ReimbursementDelegate implements Delegate {
@@ -29,17 +30,64 @@ public class ReimbursementDelegate implements Delegate {
     }
     @Override
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        HttpSession session = request.getSession(false);
-        Employee currentUser = (Employee) session.getAttribute("currentUser");
-        System.out.println(currentUser.getId());
-        System.out.println("This is the reimbursement delegate");
-        BufferedReader reader = request.getReader();
-        String body = reader.lines().collect(Collectors.joining(System.lineSeparator()));
-        ReimbursementTemplate rt = om.readValue(body, ReimbursementTemplate.class);
-        Reimbursement r = reimbursementService.submitReimbursement(rt);
-        List<Reimbursement> reimbursements = reimbursementService.getAllReimbursements(currentUser.getId());
-        ResponseUtil.writeJSON(response, reimbursements);
+//        // TODO Auto-generated method stub
+//        HttpSession session = request.getSession(false);
+//        Employee currentUser = (Employee) session.getAttribute("currentUser");
+//        BufferedReader reader = request.getReader();
+//        String body = reader.lines().collect(Collectors.joining(System.lineSeparator()));
+//        ReimbursementTemplate rt = om.readValue(body, ReimbursementTemplate.class);
+//        Reimbursement r = reimbursementService.submitReimbursement(rt);
+//        List<Reimbursement> reimbursements = reimbursementService.getAllReimbursements(currentUser.getId());
+//        ResponseUtil.writeJSON(response, reimbursements);
+//    
+        String path = (String) request.getAttribute("path");
+        System.out.println(path);
+        String[] portions = path.split("/");
+        System.out.println(portions.length);
+        
+        switch(portions.length) {
+        case 1:
+            handleGroup(request, response);
+            break;
+        case 2:
+            try {
+                handleSingle(request, response, Integer.parseInt(portions[1]));
+            }catch(NumberFormatException e) {
+                response.sendError(401);
+            }
+            break;   
+        default:
+             response.sendError(401);
+             break;      
+        }
+    }
+    private void handleSingle(HttpServletRequest request, HttpServletResponse response, int id) throws ServletException, IOException{
+        
+        switch(request.getMethod()) {
+        case "GET": {
+            List<Reimbursement> reimbursements = reimbursementService.getAllReimbursements(id);
+            ResponseUtil.writeJSON(response, reimbursements);
+            break;
+        }
+        default:
+            response.sendError(401);
+            break;
+        }
+    }
+    private void handleGroup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        switch(request.getMethod()) {
+        case "POST": {
+            BufferedReader reader = request.getReader();
+            String body = reader.lines().collect(Collectors.joining(System.lineSeparator()));
+            ReimbursementTemplate rt = om.readValue(body, ReimbursementTemplate.class);
+            Reimbursement r = reimbursementService.submitReimbursement(rt);
+            ResponseUtil.writeJSON(response, r);
+            break;
+        }
+        default:
+            response.sendError(401);
+            break;
+        }
     }
 
 }

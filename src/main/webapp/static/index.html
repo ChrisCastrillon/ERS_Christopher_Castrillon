@@ -77,7 +77,7 @@
 				let employee = await response.json();
 				//console.log(response)
 				console.log("data : " + JSON.stringify(employee));
-				sessionStorage.setItem("currentUser", employee.username);
+				sessionStorage.setItem("currentUser", employee.id);
 				console.log("current user is : " + sessionStorage.currentUser);
 				
 				if(employee.role.name === "employee") {
