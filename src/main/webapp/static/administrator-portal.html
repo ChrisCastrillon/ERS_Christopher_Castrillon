@@ -58,8 +58,11 @@
 		searchButton.addEventListener("click", searchThroughList);
 		let logoutButton = document.getElementById("logout");
         logoutButton.addEventListener("click", logout);
+		let viewAllReimbursementsButton = document.getElementById("ViewAllReimbursements");
+		viewAllReimbursementsButton.addEventListener("click", function() {
+			populateTable();
+		});
 		
-		populateTable();
 		async function populateTable() {
 
 			//send a get request to get a list of all users
@@ -93,181 +96,204 @@
 				insertIntoTable(item);
 			}
 		}
-		    function insertIntoTable(item) {
-            // console.log("The data passed to the form: " + JSON.stringify(item))
-            let tagForStatusCell = document.createElement("td");
-            
-            let tableRef = document.getElementById("Reimbursements").getElementsByTagName('tbody')[0];
-            let newRow = tableRef.insertRow(tableRef.rows.length);
-			newRow.setAttribute("id",`row-${JSON.stringify(item.reimbId)}`);
-           
-		    let reimbType;
-			// console.log(typeof item.type)
-			switch(item.type) {
-				case 1:
-					reimbType = "travel";
-					break;
-				case 2:
-					reimbType = "lodging";
-					break;
-				case 3:
-					reimbType = "food";
-					break;
-				case 4:
-					reimbType = "other";
-					break
-			}
-			let statusType;
-            switch(item.statusId) {
-                case 1:
-                    statusType = "pending";
-                    break;
-                case 2:
-                    statusType = "approved";
-                    break;
-                case 3:
-                    statusType = "denied";
-                    break;
-            }
-
-            // Insert a cell in the row at index 0
-			
-			let values = ["pending", "approved", "denied"];
-			
-			let statusCell = document.createElement("select");
-
-			statusCell.name = "statuses";
-			statusCell.id = JSON.stringify(item.reimbId);
-
-			for(const val of values) {
-				let option = document.createElement("option");
-				option.value = val;
-				option.text = val.charAt(0).toUpperCase() + val.slice(1);
-				statusCell.appendChild(option);
-				// console.log(option.text)
-			}
-			let label = document.createElement("label");
-			label.htmlFor = "statuses";
-			// document.getElementById("selector").appendChild(label).appendChild(statusCell);
-			let newStatusCell;
-			let newStatus;
-			let newResolvedCell;
-			let newResolved;	
-			let newEIDCell = newRow.insertCell(0);
-            let newReimbIDCell = newRow.insertCell(1);
-            let newSubmittedCell = newRow.insertCell(2);
-            let newTypeCell = newRow.insertCell(3);
-            let newAmountCell = newRow.insertCell(4);
-            let newDescriptionCell = newRow.insertCell(5);
-            let newReceiptCell = newRow.insertCell(6);
-            switch(item.statusId){
-				case 1:
-				newStatusCell = newRow.insertCell(7).appendChild(statusCell);
-				newStatus = document.createTextNode(statusType);
-				newStatusCell.appendChild(newStatus);
-				break;
-				case 2:
-				newStatusCell = newRow.insertCell(7);
-				newStatus = document.createTextNode("approved");
-				newStatusCell.appendChild(newStatus);
-				break;
-				case 3:
-				newStatusCell = newRow.insertCell(7);
-				newStatus = document.createTextNode("denied");
-				newStatusCell.appendChild(newStatus);
-				break;
-			}
-			switch(item.resolveTimeStamp){
-				case null:
-				newResolvedCell = newRow.insertCell(8);
-				newResolved = document.createTextNode("NOT RESOLVED");
-				newResolvedCell.appendChild(newResolved);
-
-				break;
-				default:
-				newResolvedCell = newRow.insertCell(8);
-				newResolved = document.createTextNode(new Date(item.resolveTimeStamp).toISOString());
-				newResolvedCell.appendChild(newResolved);
-			}
-           
-            let newResolverIDCell = newRow.insertCell(9); 		
-            // Append a text node to the cell
-            let newEID = document.createTextNode(item.author);
-            let newReimbID = document.createTextNode(item.reimbId);
-            let newSubmit = document.createTextNode(new Date(item.submitTimeStamp).toISOString());
-            let newType = document.createTextNode(reimbType);
-            let newAmount = document.createTextNode("$" + item.reimbAmount);
-            let newDescription = document.createTextNode(item.description);
-            let newReceipt = document.createTextNode("receipt");
-            
-            
-            let newResolverID = document.createTextNode(item.resolver);
-            // let statusSelector = document.getElementById('status');
-            
-            // newStatusCell.appendChild(newStatusSelecor);
-
-            newEIDCell.appendChild(newEID);
-            newReimbIDCell.appendChild(newReimbID);
-            newSubmittedCell.appendChild(newSubmit);
-            newTypeCell.appendChild(newType);
-            newAmountCell.appendChild(newAmount);
-            newDescriptionCell.appendChild(newDescription);
-            newReceiptCell.appendChild(newReceipt);
-            
-            
-            newResolverIDCell.appendChild(newResolverID);
-			
-
-			//you can get a list of the values in the cell by the id
-			//you set and id for the selector; so now, you need an event listener to 
-			//get the value of the selector, send that to a function that will update the 
-			//database
-			// let firstRow = document.getElementById("1").innerText;
-			// firstRow = firstRow.split("\t");
-			// console.log(firstRow);
-			
-			// console.log("getting the element of the document " + document.getElementById("1").innerText);
-			
+		function iterateEmployees(employeeList) {
+			employeeList.forEach(element => {
+				insertIntoEmployeeTable(element);
+			})
+		}
+		function insertIntoEmployeeTable(elemnt) {
+			alert("this function should be called");
+		}
+		function insertIntoTable(item) {
+		// console.log("The data passed to the form: " + JSON.stringify(item))
+		let tagForStatusCell = document.createElement("td");
 		
-			
-			let selectStatuses = document.querySelectorAll("select");
-			let statusNumber;
-			let theReimbursementId;
-			for(const s of selectStatuses) {
-				s.addEventListener("change", function(event) {
-					console.log("the value of the status is: " + this.value);
-					// let newStatus;
-					
-					switch(this.value) {
-						case "pending":
-							statusNumber = 1;
-							break;
-						case "approved":
-							statusNumber = 2;
-							break;
-						case "denied":
-							statusNumber = 3;
-							break;
-					}
-					theReimbursementId = this.id;
-					update(theReimoyeebursementId, statusNumber);
-					
-				})
-			}
-			// let theReimbursementId = this.id;
-			console.log("Is the reimbursementID null? " + theReimbursementId);
-			// if (theReimbursementId !== undefined) {
-			// 	update(theReimbursementId, statusNumber);
-			// }
-			
-			// for(let i = 0; i < selectStatus.length; i++) {
-			// 	selectStatus[i].addEventListener("change", function(event) {
-			// 		alert(event.target.value), 
-			// 		event.stopImmediatePropagation;
-			// 	});
-			// }
-           
+		let tableRef = document.getElementById("Reimbursements").getElementsByTagName('tbody')[0];
+		let newRow = tableRef.insertRow(tableRef.rows.length);
+		newRow.setAttribute("id",`row-${JSON.stringify(item.reimbId)}`);
+		
+		let reimbType;
+		// console.log(typeof item.type)
+		switch(item.type) {
+			case 1:
+				reimbType = "travel";
+				break;
+			case 2:
+				reimbType = "lodging";
+				break;
+			case 3:
+				reimbType = "food";
+				break;
+			case 4:
+				reimbType = "other";
+				break
+		}
+		let statusType;
+		switch(item.statusId) {
+			case 1:
+				statusType = "pending";
+				break;
+			case 2:
+				statusType = "approved";
+				break;
+			case 3:
+				statusType = "denied";
+				break;
+		}
+
+		// Insert a cell in the row at index 0
+		
+		let values = ["pending", "approved", "denied"];
+		
+		let statusCell = document.createElement("select");
+
+		statusCell.name = "statuses";
+		statusCell.id = JSON.stringify(item.reimbId);
+
+		for(const val of values) {
+			let option = document.createElement("option");
+			option.value = val;
+			option.text = val.charAt(0).toUpperCase() + val.slice(1);
+			statusCell.appendChild(option);
+			// console.log(option.text)
+		}
+		let label = document.createElement("label");
+		label.htmlFor = "statuses";
+		// document.getElementById("selector").appendChild(label).appendChild(statusCell);
+		let newStatusCell;
+		let newStatus;
+		let newResolvedCell;
+		let newResolved;	
+		let newEIDCell = newRow.insertCell(0);
+		let newReimbIDCell = newRow.insertCell(1);
+		let newSubmittedCell = newRow.insertCell(2);
+		let newTypeCell = newRow.insertCell(3);
+		let newAmountCell = newRow.insertCell(4);
+		let newDescriptionCell = newRow.insertCell(5);
+		let newReceiptCell = newRow.insertCell(6);
+		switch(item.statusId){
+			case 1:
+			newStatusCell = newRow.insertCell(7).appendChild(statusCell);
+			newStatus = document.createTextNode(statusType);
+			newStatusCell.appendChild(newStatus);
+			break;
+			case 2:
+			newStatusCell = newRow.insertCell(7);
+			newStatus = document.createTextNode("approved");
+			newStatusCell.appendChild(newStatus);
+			break;
+			case 3:
+			newStatusCell = newRow.insertCell(7);
+			newStatus = document.createTextNode("denied");
+			newStatusCell.appendChild(newStatus);
+			break;
+		}
+		switch(item.resolveTimeStamp){
+			case null:
+			newResolvedCell = newRow.insertCell(8);
+			newResolved = document.createTextNode("NOT RESOLVED");
+			newResolvedCell.appendChild(newResolved);
+
+			break;
+			default:
+			newResolvedCell = newRow.insertCell(8);
+			newResolved = document.createTextNode(new Date(item.resolveTimeStamp).toISOString());
+			newResolvedCell.appendChild(newResolved);
+		}
+		
+		let newResolverIDCell = newRow.insertCell(9); 		
+		// Append a text node to the cell
+		let newEID = document.createTextNode(item.author);
+		let newReimbID = document.createTextNode(item.reimbId);
+		let newSubmit = document.createTextNode(new Date(item.submitTimeStamp).toISOString());
+		let newType = document.createTextNode(reimbType);
+		let newAmount = document.createTextNode("$" + item.reimbAmount);
+		let newDescription = document.createTextNode(item.description);
+		let newReceipt = document.createTextNode("receipt");
+		
+		
+		let newResolverID = document.createTextNode(item.resolver);
+		// let statusSelector = document.getElementById('status');
+		
+		// newStatusCell.appendChild(newStatusSelecor);
+
+		newEIDCell.appendChild(newEID);
+		newReimbIDCell.appendChild(newReimbID);
+		newSubmittedCell.appendChild(newSubmit);
+		newTypeCell.appendChild(newType);
+		newAmountCell.appendChild(newAmount);
+		newDescriptionCell.appendChild(newDescription);
+		newReceiptCell.appendChild(newReceipt);
+		
+		
+		newResolverIDCell.appendChild(newResolverID);
+		
+
+		//you can get a list of the values in the cell by the id
+		//you set and id for the selector; so now, you need an event listener to 
+		//get the value of the selector, send that to a function that will update the 
+		//database
+		// let firstRow = document.getElementById("1").innerText;
+		// firstRow = firstRow.split("\t");
+		// console.log(firstRow);
+		
+		// console.log("getting the element of the document " + document.getElementById("1").innerText);
+		
+	
+		
+		let selectStatuses = document.querySelectorAll("select");
+		let statusNumber;
+		let theReimbursementId;
+		for(const s of selectStatuses) {
+			s.addEventListener("change", function(event) {
+				console.log("the value of the status is: " + this.value);
+				// let newStatus;
+				
+				switch(this.value) {
+					case "pending":
+						statusNumber = 1;
+						break;
+					case "approved":
+						statusNumber = 2;
+						break;
+					case "denied":
+						statusNumber = 3;
+						break;
+				}
+				theReimbursementId = this.id;
+				update(theReimoyeebursementId, statusNumber);
+				
+			})
+		}
+		// let theReimbursementId = this.id;
+		console.log("Is the reimbursementID null? " + theReimbursementId);
+		// if (theReimbursementId !== undefined) {
+		// 	update(theReimbursementId, statusNumber);
+		// }
+		
+		// for(let i = 0; i < selectStatus.length; i++) {
+		// 	selectStatus[i].addEventListener("change", function(event) {
+		// 		alert(event.target.value), 
+		// 		event.stopImmediatePropagation;
+		// 	});
+		// }
+		
         }
+		async function getAllEmployees() {
+			alert("get all employees called");
+			try {
+				let allEmployeeResponse = await fetch("http://localhost:8080/ERS_Christopher_Castrillon/employees");
+
+			
+				let allEmployeeList = await allEmployeeResponse.json();
+				iterateEmployees(allEmployeeList);
+
+				console.log("data : " + JSON.stringify(reimbList));
+			} catch (error) {
+				console.log("error is " + error);
+				alert("Failed to populate list!");
+			}
+		}
 
 		function searchThroughList() {
 			let serachText = document.getElementById("searchText");
