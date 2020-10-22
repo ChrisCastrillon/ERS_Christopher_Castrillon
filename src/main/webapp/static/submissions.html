@@ -130,6 +130,7 @@
         }
         async function submit() {
             console.log("in function");
+            
 
             let subType;
             let radioElement = document.getElementsByName("submissionType");
@@ -138,7 +139,7 @@
                     subType = radioElement[i].value;
                 }
             }
-            console.log(subType);
+            // console.log(subType);
             alert(subType);
 
             let firstNameInput = document.getElementById("firstName").value;
@@ -178,7 +179,6 @@
             }
             
         }
-       
         function getObjectsToSendToTable(reimbursementData) {
             reimbursementData.forEach(element => {
                 insertIntoTable(element);

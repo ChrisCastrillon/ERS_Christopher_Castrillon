@@ -80,12 +80,15 @@ public class ReimbursementDelegate implements Delegate {
             List<Reimbursement> allReimbursements = reimbursementService.getAllReimbursements();
             ResponseUtil.writeJSON(response, allReimbursements);
         case "POST": 
-            String body = RequestUtil.readBody(request);
-            ReimbursementTemplate rt = om.readValue(body, ReimbursementTemplate.class);
+            String newReimbursement = RequestUtil.readBody(request);
+            ReimbursementTemplate rt = om.readValue(newReimbursement, ReimbursementTemplate.class);
             Reimbursement r = reimbursementService.submitReimbursement(rt);
             ResponseUtil.writeJSON(response, r);
             break;
-        
+        case "PUT":
+            String updateForm = RequestUtil.readBody(request);
+            
+            
         default:
             response.sendError(401);
             break;

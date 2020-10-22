@@ -5,14 +5,20 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<title>Administrator Portal</title>
+		<title>Administrator Portal</title>
 </head>
 
-<body>
-	<div class="jumbotron text-center" style="background-color: #ffce2b; border-bottom: 5px solid #f2f2f2;">
+<body style="background-color: rgb(235, 235, 235)">
+	<div class="jumbotron text-center" style="background-color: #ffce2b; border-bottom: 5px solid #f2f2f2; margin-bottom: 0px; width:100%" >
 		<h1 style="color: white; font-size: 45px">Submitted Reimbursements</h1>
 	</div>
-	<div class="container">
+	
+	<nav class="navbar" style="background-color: rgb(255, 255, 255); width: 100%; box-shadow: 5px 5px 5px rgba(92, 92, 92, 0.261); margin-bottom: 20px;";>
+		<button type="submit" class="btn btn-deault" id="ViewAllReimbursements">View All Reimbursements</button>
+		<button type="submi" class="btn btn-default" id="ManageAccounts">Manage Accounts</button>
+	</nav>
+	
+	<div class="container" style="margin: auto">
 		<div class="input-group mb-3">
 			<input type="text" class="form-control" id= "searchText" placeholder="Search" aria-label="Search"
 				aria-describedby="basic-addon2">
@@ -23,8 +29,8 @@
 	</div>
 	<div class="container">
 		<div class="col-10 offset-1 col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
-			<table class="table table-bordered" id="Reimbursements">
-				<thead class="thead text-white" style="background-color: #1d2d75;">
+			<table class="table table-bordered" id="Reimbursements" style="background-color: white; border-radius:5px" >
+				<thead class="thead text-white" style="background-color: #9d9d9d;">
 					<tr>
 						<th scope="col">Employee_ID</th>
 						<th scope="col">Reimbursement_ID</th>
@@ -244,7 +250,7 @@
 							break;
 					}
 					theReimbursementId = this.id;
-					update(theReimbursementId, statusNumber);
+					update(theReimoyeebursementId, statusNumber);
 					
 				})
 			}
