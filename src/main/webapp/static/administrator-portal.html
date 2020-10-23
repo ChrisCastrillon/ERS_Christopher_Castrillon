@@ -13,9 +13,21 @@
 		<h1 style="color: white; font-size: 45px">Submitted Reimbursements</h1>
 	</div>
 	
-	<nav class="navbar" style="background-color: rgb(255, 255, 255); width: 100%; box-shadow: 5px 5px 5px rgba(92, 92, 92, 0.261); margin-bottom: 20px;";>
-		<button type="submit" class="btn btn-deault" id="ViewAllReimbursements">View All Reimbursements</button>
-		<button type="submi" class="btn btn-default" id="ManageAccounts">Manage Accounts</button>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: rgb(255, 255, 255); width: 100%; box-shadow: 5px 5px 5px rgba(92, 92, 92, 0.261); margin-bottom: 20px;";>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav" style="float: right;" >
+				<li class="nav-tiem active">
+					<button type="submit" class="btn btn-deault" id="ViewAllReimbursements">View All Reimbursements</button>
+				</li>
+				<li class= "nav-item" style="margin-left: 20px;">
+					<button type="submi" class="btn btn-default" id="ManageAccounts">Manage Accounts</button>
+				</li>
+				<li class="nav-item" style="margin-left: 20px;">
+					<button type="submit" class="btn btn-default" id="logout">Logout</button>
+				</li>
+			</ul>
+
+		</div>
 	</nav>
 	
 	<div class="container" style="margin: auto">
@@ -50,9 +62,6 @@
 			</table>
 		</div>
 	</div>
-
-	<button type="submit" class="btn btn-default" id="logout">Logout</button>
-
 	<script>
 		let searchButton = document.getElementById("searchSubmit");
 		searchButton.addEventListener("click", searchThroughList);
@@ -62,6 +71,10 @@
 		viewAllReimbursementsButton.addEventListener("click", function() {
 			populateTable();
 		});
+		let manageEmployeesButton = document.getElementById("ManageAccounts");
+		manageEmployeesButton.addEventListener("click", function() {
+			getAllEmployees();
+		})
 		
 		async function populateTable() {
 
@@ -288,7 +301,7 @@
 				let allEmployeeList = await allEmployeeResponse.json();
 				iterateEmployees(allEmployeeList);
 
-				console.log("data : " + JSON.stringify(reimbList));
+				console.log("Employee list " + JSON.stringify(allEmployeeList));
 			} catch (error) {
 				console.log("error is " + error);
 				alert("Failed to populate list!");
