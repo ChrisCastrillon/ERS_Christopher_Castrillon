@@ -40,6 +40,9 @@ public class RequestDispatcher {
         delegateMap.put("administrator-portal", (req, resp) -> {
             req.getRequestDispatcher("/static/administrator-portal.html").forward(req, resp);
         });
+        delegateMap.put("manage-accounts", (req, resp) -> {
+            req.getRequestDispatcher("/static/manage-accounts.html").forward(req, resp);
+        });
     }
     public Delegate dispatch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         final String URI = request.getRequestURI().replace("/ERS_Christopher_Castrillon", "");
@@ -54,10 +57,8 @@ public class RequestDispatcher {
         request.setAttribute("path", remainder);
         
         String resource = remainder.split("/")[0];
-        System.out.println("The resource in question is: " + resource);
-        
+        System.out.println("The resource in question is: " + resource);  
         return delegateMap.get(resource);
-        
     }
     
 }

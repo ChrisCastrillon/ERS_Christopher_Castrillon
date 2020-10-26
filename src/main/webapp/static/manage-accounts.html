@@ -9,17 +9,20 @@
 
 <body style="background-color: rgb(235, 235, 235)">
 	<div class="jumbotron text-center" style="background-color: #ffce2b; border-bottom: 5px solid #f2f2f2; margin-bottom: 0px; width:100%" >
-		<h1 style="color: white; font-size: 45px">Submitted Reimbursements</h1>
+		<h1 style="color: white; font-size: 45px">Manage Accounts</h1>
 	</div>
 	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: rgb(255, 255, 255); width: 100%; box-shadow: 5px 5px 5px rgba(92, 92, 92, 0.261); margin-bottom: 20px;";>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav" style="float: right;" >
-				<li class="nav-tiem active">
-					<button type="submit" class="btn btn-deault" id="ViewAllReimbursements">View All Reimbursements</button>
-				</li>
-				<li class= "nav-item" style="margin-left: 20px;">
-					<button type="submi" class="btn btn-default" id="ManageAccounts">Manage Accounts</button>
+				<!-- <li class="nav-tiem active">
+					<button type="submit" class="btn btn-deault" id="ViewAllReimbursements">View All Accounts</button>
+				</li> -->
+				<!-- <li class= "nav-item" style="margin-left: 20px;">
+					<button type="submit" class="btn btn-default" id="ManageAccounts">Manage Accounts</button>
+				</li> -->
+				<li class="nav-item" style="margin-left:20px">
+					<button type="submit" class="btn btn-default" id="BackToReimbursements">Back to All Reimbursements</button>
 				</li>
 				<li class="nav-item" style="margin-left: 20px;">
 					<button type="submit" class="btn btn-default" id="logout">Logout</button>
@@ -40,13 +43,14 @@
 	</div>
 	<div class="container">
 		<div class="col-10 offset-1 col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
-			<table class="table table-bordered" id="Reimbursements" style="background-color: white; border-radius:5px" >
+			<table class="table table-bordered" id="Accounts" style="background-color: white; border-radius:5px; box-shadow: 5px 5px 5px rgba(92, 92, 92, 0.261);" >
 				<thead class="thead text-white" style="background-color: #9d9d9d;">
 					<tr>
 						<th scope="col">Employee ID</th>
 						<th scope="col">Username</th>
-						<th scope="col">First Name</th>
 						<th scope="col">Password</th>
+						<th scope="col">First Name</th>
+						<th scope="col">Last Name</th>
 						<th scope="col">Role</th>
 						<th scope="col">Email</th>
 						<th scope="col">Actions</th>
@@ -58,5 +62,79 @@
 			</table>
 		</div>
 	</div>
+	<script>
+		getAllEmployees();
+		let logoutButton = document.getElementById("logout");
+        logoutButton.addEventListener("click", function() {
+			logout();
+		});
+		let backButton = document.getElementById("BackToReimbursements");
+		backButton.addEventListener("click", function() {
+			backToReimbursements();
+		});
+		function iterateEmployees(employeeList) {
+			employeeList.forEach(element => {
+				insertIntoEmployeeTable(element);
+			})
+		}
+		function insertIntoEmployeeTable(account) {
+			let actionButton = document.createElement("button");
+			let tableRef = document.getElementById("Accounts").getElementsByTagName('tbody')[0];
+			let newRow = tableRef.insertRow(tableRef.rows.length);
+			let newEIDCell = newRow.insertCell(0);
+			let newUsernameCell = newRow.insertCell(1);
+			let newPasswordCell = newRow.insertCell(2);
+			let newFirstNameCell = newRow.insertCell(3);
+			let newLastNameCell = newRow.insertCell(4);
+			let newRoleCell = newRow.insertCell(5);
+			let newEmailCell =  newRow.insertCell(6);
+			let newActionsCell = newRow.insertCell(7);
+
+			let newEID = document.createTextNode(account.id);
+			let newUsername = document.createTextNode(account.username);
+			let newPassword = document.createTextNode(account.password);
+			let newFirstName = document.createTextNode(account.firstName);
+			let newLastName = document.createTextNode(account.lastName);
+			let newRole = document.createTextNode(account.role.name);
+			let newEmail = document.createTextNode(account.email);
+			let newAction = document.createTextNode("update");
+
+
+			newEIDCell.appendChild(newEID);
+			newUsernameCell.appendChild(newUsername);
+			newFirstNameCell.appendChild(newFirstName);
+			newLastNameCell.appendChild(newLastName);
+			newPasswordCell.appendChild(newPassword);
+			newRoleCell.appendChild(newRole);
+			newEmailCell.appendChild(newEmail);
+			//add teh text to the button
+			actionButton.appendChild(newAction);
+			
+			newActionsCell.appendChild(actionButton);
+			
+		}
+		async function getAllEmployees() {
+			try {
+				let allEmployeeResponse = await fetch("http://localhost:8080/ERS_Christopher_Castrillon/employees");
+
+			
+				let allEmployeeList = await allEmployeeResponse.json();
+				iterateEmployees(allEmployeeList);
+
+				console.log("Employee list " + JSON.stringify(allEmployeeList));
+			} catch (error) {
+				console.log("error is " + error);
+				alert("Failed to populate list!");
+			}
+		}
+		function backToReimbursements() {
+			window.location.assign("http://localhost:8080/ERS_Christopher_Castrillon/administrator-portal");
+
+		}
+		function logout() {
+            window.location.assign("http://localhost:8080/ERS_Christopher_Castrillon/logout");
+        }
+
+	</script>
 </body>
 </html>

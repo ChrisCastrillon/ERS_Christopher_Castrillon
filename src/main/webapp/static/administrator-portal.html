@@ -41,7 +41,7 @@
 	</div>
 	<div class="container">
 		<div class="col-10 offset-1 col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
-			<table class="table table-bordered" id="Reimbursements" style="background-color: white; border-radius:5px" >
+			<table class="table table-bordered" id="Reimbursements" style="background-color: white; border-radius:5px; box-shadow: 5px 5px 5px rgba(92, 92, 92, 0.261);" >
 				<thead class="thead text-white" style="background-color: #9d9d9d;">
 					<tr>
 						<th scope="col">Employee_ID</th>
@@ -73,7 +73,7 @@
 		});
 		let manageEmployeesButton = document.getElementById("ManageAccounts");
 		manageEmployeesButton.addEventListener("click", function() {
-			getAllEmployees();
+			goToAccountManagement();
 		})
 		
 		async function populateTable() {
@@ -109,14 +109,7 @@
 				insertIntoTable(item);
 			}
 		}
-		function iterateEmployees(employeeList) {
-			employeeList.forEach(element => {
-				insertIntoEmployeeTable(element);
-			})
-		}
-		function insertIntoEmployeeTable(elemnt) {
-			alert("this function should be called");
-		}
+		
 		function insertIntoTable(item) {
 		// console.log("The data passed to the form: " + JSON.stringify(item))
 		let tagForStatusCell = document.createElement("td");
@@ -251,9 +244,7 @@
 		// console.log(firstRow);
 		
 		// console.log("getting the element of the document " + document.getElementById("1").innerText);
-		
-	
-		
+
 		let selectStatuses = document.querySelectorAll("select");
 		let statusNumber;
 		let theReimbursementId;
@@ -292,22 +283,6 @@
 		// }
 		
         }
-		async function getAllEmployees() {
-			alert("get all employees called");
-			try {
-				let allEmployeeResponse = await fetch("http://localhost:8080/ERS_Christopher_Castrillon/employees");
-
-			
-				let allEmployeeList = await allEmployeeResponse.json();
-				iterateEmployees(allEmployeeList);
-
-				console.log("Employee list " + JSON.stringify(allEmployeeList));
-			} catch (error) {
-				console.log("error is " + error);
-				alert("Failed to populate list!");
-			}
-		}
-
 		function searchThroughList() {
 			let serachText = document.getElementById("searchText");
 			let filter = searchText.value.toUpperCase();
@@ -373,7 +348,9 @@
         if (!currentUser) {
             logout();
         }
-		
+		function goToAccountManagement() {
+			window.location.assign("http://localhost:8080/ERS_Christopher_Castrillon/manage-accounts");
+		}
 		
 	</script>
 </body>
