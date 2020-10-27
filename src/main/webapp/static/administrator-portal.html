@@ -217,6 +217,9 @@
 		let newDescription = document.createTextNode(item.description);
 		let newReceipt = document.createTextNode("receipt");
 		
+		console.log("receipt image is: " + item.receipt);
+		let receiptImage = document.createElement("img");
+		receiptImage.src = 'data:image/pg;base64,' + item.receipt;
 		
 		let newResolverID = document.createTextNode(item.resolver);
 		// let statusSelector = document.getElementById('status');
@@ -229,7 +232,7 @@
 		newTypeCell.appendChild(newType);
 		newAmountCell.appendChild(newAmount);
 		newDescriptionCell.appendChild(newDescription);
-		newReceiptCell.appendChild(newReceipt);
+		newReceiptCell.appendChild(receiptImage);
 		
 		
 		newResolverIDCell.appendChild(newResolverID);

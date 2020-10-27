@@ -35,7 +35,7 @@ public class ReimbursementServiceTest {
        
         testInstance = new ReimbursementService(mockedDAO);
         testReimbursement = new Reimbursement();
-        testReimbursementTemplate = new ReimbursementTemplate("1", "eemployeefn", "eemployeeln", "2", "eemployee@ers.com", "travel jet blue sale", "68");
+//        testReimbursementTemplate = new ReimbursementTemplate("1", "eemployeefn", "eemployeeln", "2", "eemployee@ers.com", "travel jet blue sale", "68");
         when(mockedDAO.insert(testReimbursement)).thenReturn(testReimbursement);
     }
 
