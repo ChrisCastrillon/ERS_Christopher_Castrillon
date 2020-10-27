@@ -14,7 +14,7 @@
         <h1 id="welcome" style="color: white; font-size: 45px;">Employee Reimbursement Page</h1>
     </div>
 
-    <div class="section-1-container">
+    <div class="section-1-container" style="background-color: white; width: 50%; margin:auto; border-radius: 15px; padding:1em; box-shadow: 5px 5px 5px rgba(92, 92, 92, 0.261);">
         <div class="container">
             <div class="row">
                 <div class="col-10 offset-1 col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
@@ -51,9 +51,10 @@
                                 <label class="sr-only" for="description">Description</label>
                                 <input type="text" class="form-control" id="description" placeholder="Description">
 
-                                <label class="sr-only" for="amount">Amount</label>
+                                <label class="sr-only" for="amount">Amoungit st</label>
                                 <input type="text" class="form-control" id="amount" placeholder="Amount">
-                                <label for="uploadReceipt">Upload</label>
+                                
+                                <label for="uploadReceipt" id="ImageUpload">Upload</label>
                                 <input type="file" class="form-control-file" id="receipt">
                                 <br>
                                 <button type="submit" class="btn btn-default" id="submitForm">Submit</button>
@@ -65,8 +66,8 @@
                             <br>
                             <div class="container">
                                 <div class="col-10 offset-1 col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
-                                    <table class="table table-bordered" id="Reimbursements">
-                                        <thead class="thead text-white" style="background-color: #1d2d75;">
+                                    <table class="table table-bordered" id="Reimbursements"  style="background-color: white; border-radius:5px; box-shadow: 5px 5px 5px rgba(92, 92, 92, 0.261);">
+                                        <thead class="thead text-white" style="background-color: #9d9d9d;">
                                             <tr>
                                                 <th scope="col">Employee_ID</th>
                                                 <th scope="col">Reimbursement_ID</th>
@@ -93,6 +94,15 @@
         </div>
     </div>
     <script>
+
+        //the following is for uploading images
+        let result;
+        let file;
+        let imageData;
+        let byteArray=[];
+
+        let imageUpload = document.getElementById("ImageUpload");
+        let imageInput = document.getElementById("receipt");
         
         let currentUser = sessionStorage.getItem("currentUser");
         let viewPastReimbursementsButton = document.getElementById("ViewPastReimbursements");
