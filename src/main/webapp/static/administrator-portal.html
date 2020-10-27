@@ -180,16 +180,19 @@
 		switch(item.statusId){
 			case 1:
 			newStatusCell = newRow.insertCell(7).appendChild(statusCell);
+			newStatusCell.parentElement.style.backgroundColor = "rgb(242,234,203)";
 			newStatus = document.createTextNode(statusType);
 			newStatusCell.appendChild(newStatus);
 			break;
 			case 2:
 			newStatusCell = newRow.insertCell(7);
 			newStatus = document.createTextNode("approved");
+			newStatusCell.style.backgroundColor = "rgb(178, 219, 189)";
 			newStatusCell.appendChild(newStatus);
 			break;
 			case 3:
 			newStatusCell = newRow.insertCell(7);
+			newStatusCell.style.backgroundColor = "rgb(219, 178, 178)";
 			newStatus = document.createTextNode("denied");
 			newStatusCell.appendChild(newStatus);
 			break;
