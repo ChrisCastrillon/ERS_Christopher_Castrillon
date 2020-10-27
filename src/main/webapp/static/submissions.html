@@ -14,7 +14,7 @@
         <h1 id="welcome" style="color: white; font-size: 45px;">Employee Reimbursement Page</h1>
     </div>
 
-    <div class="section-1-container" style="background-color: white; width: 50%; margin:auto; border-radius: 15px; padding:1em; box-shadow: 5px 5px 5px rgba(92, 92, 92, 0.261);">
+    <div class="section-1-container" style="background-color: white; width: 75%; margin:auto; border-radius: 15px; padding:1em; box-shadow: 5px 5px 5px rgba(92, 92, 92, 0.261);">
         <div class="container">
             <div class="row">
                 <div class="col-10 offset-1 col-lg-8 offset-lg-2 d-flex justify-content-center align-items-center">
@@ -51,12 +51,19 @@
                                 <label class="sr-only" for="description">Description</label>
                                 <input type="text" class="form-control" id="description" placeholder="Description">
 
-                                <label class="sr-only" for="amount">Amoungit st</label>
+                                <label class="sr-only" for="amount">Amount</label>
                                 <input type="text" class="form-control" id="amount" placeholder="Amount">
                                 
-                                <label for="uploadReceipt" id="ImageUpload">Upload</label>
+                                <div class="form-group">
+                                    <Label for="receipt">Receipt</Label>
+                                        <input id="uploadReceipt" hidden="hidden" type="file" name="receipt">
+                                        <button id="uploadReceiptButton" class="btn btn-default mr-3" onclick="">Choose A File</button>
+                                        <span id='file-name'>No file chosen</span>
+                                </div>
+                                <!-- <label for="uploadReceipt" id="ImageUpload">Upload</label>
                                 <input type="file" class="form-control-file" id="receipt">
-                                <br>
+                                <br> -->
+                                
                                 <button type="submit" class="btn btn-default" id="submitForm">Submit</button>
                                 <button type="submit" class="btn btn-default" id="logout">Logout</button>
                                 <button type="submit" class="btn btn-default" id="ViewPastReimbursements">View Past Reimbursements</button>
@@ -96,13 +103,28 @@
     <script>
 
         //the following is for uploading images
-        let result;
+        let res;
         let file;
         let imageData;
         let byteArray=[];
 
-        let imageUpload = document.getElementById("ImageUpload");
-        let imageInput = document.getElementById("receipt");
+        let uploadReceipt = document.getElementById("uploadReceipt");
+        let uploadReceiptButtons = document.getElementById("uploadReceiptButton");
+        let imageName = document.getElementById("file-name");
+        
+        uploadReceiptButton.addEventListener("click", function() {
+                uploadReceipt.click();
+        });
+        uploadReceipt.addEventListener("change", function() {
+            console.log(uploadReceipt.files);
+            processImage();
+            if (uploadReceipt.value) {
+                imageName.innerHTML = uploadReceipt.value;
+            }
+            else {
+                imageName.innerHTML = "No file Chosen"
+            }
+        });
         
         let currentUser = sessionStorage.getItem("currentUser");
         let viewPastReimbursementsButton = document.getElementById("ViewPastReimbursements");
@@ -122,6 +144,27 @@
         }
         let welcome = document.getElementById("welcome");
         welcome.innerHTML += " " + currentUser;
+
+        function processImage() {
+            console.log("in process image");
+            let fileList = uploadReceipt.files;
+            console.log(fileList);
+            let fileReader = new FileReader();
+           
+            if(fileReader && fileList && fileList.length) {
+                fileReader.readAsArrayBuffer(fileList[0]);
+                fileReader.onload = function() {
+                    imageData = fileReader.result;
+                    console.log(imageData);
+                    let array = new Uint8Array(imageData);
+                    console.log(array);
+                    for(let i = 0; i < array.length; i++) {
+                        byteArray.push(array[i]);
+                    }
+                    console.log(byteArray);
+                };
+            }
+        }
         
         //send a get request to get all reimbursements
         async function getAllReimbursements(currentUser) {
@@ -166,7 +209,8 @@
                     "eid": eidInput,
                     "email": emailInput,
                     "description": descriptionInput,
-                    "amount": amountInput
+                    "amount": amountInput,
+                    "receipt": byteArray
                 }
             )
             console.log(formData);

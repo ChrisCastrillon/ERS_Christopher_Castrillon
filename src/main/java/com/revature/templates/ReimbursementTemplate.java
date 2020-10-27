@@ -1,5 +1,7 @@
 package com.revature.templates;
 
+import java.util.Arrays;
+
 public class ReimbursementTemplate {
     private String subType;
     private String firstName;
@@ -8,12 +10,13 @@ public class ReimbursementTemplate {
     private String email;
     private String description;
     private String amount;
+    private byte[] receipt;
     public ReimbursementTemplate() {
         super();
         // TODO Auto-generated constructor stub
     }
     public ReimbursementTemplate(String subType, String firstName, String lastName, String eid, String email,
-            String description, String amount) {
+            String description, String amount, byte[] receipt) {
         super();
         this.subType = subType;
         this.firstName = firstName;
@@ -22,6 +25,7 @@ public class ReimbursementTemplate {
         this.email = email;
         this.description = description;
         this.amount = amount;
+        this.receipt = receipt;
     }
     public String getSubType() {
         return subType;
@@ -65,10 +69,17 @@ public class ReimbursementTemplate {
     public void setAmount(String amount) {
         this.amount = amount;
     }
+    public byte[] getReceipt() {
+        return receipt;
+    }
+    public void setReceipt(byte[] receipt) {
+        this.receipt = receipt;
+    }
     @Override
     public String toString() {
         return "ReimbursementTemplate [subType=" + subType + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", eid=" + eid + ", email=" + email + ", description=" + description + ", amount=" + amount + "]";
+                + ", eid=" + eid + ", email=" + email + ", description=" + description + ", amount=" + amount
+                + ", receipt=" + Arrays.toString(receipt) + "]";
     }
     @Override
     public int hashCode() {
@@ -80,6 +91,7 @@ public class ReimbursementTemplate {
         result = prime * result + ((email == null) ? 0 : email.hashCode());
         result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
         result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+        result = prime * result + Arrays.hashCode(receipt);
         result = prime * result + ((subType == null) ? 0 : subType.hashCode());
         return result;
     }
@@ -121,6 +133,8 @@ public class ReimbursementTemplate {
             if (other.lastName != null)
                 return false;
         } else if (!lastName.equals(other.lastName))
+            return false;
+        if (!Arrays.equals(receipt, other.receipt))
             return false;
         if (subType == null) {
             if (other.subType != null)

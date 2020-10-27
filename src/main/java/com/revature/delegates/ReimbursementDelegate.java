@@ -1,17 +1,17 @@
 package com.revature.delegates;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.models.Employee;
+
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimbursementService;
 import com.revature.templates.ReimbursementTemplate;
@@ -21,7 +21,7 @@ import com.revature.util.ResponseUtil;
 public class ReimbursementDelegate implements Delegate {
     private ObjectMapper om;
     private ReimbursementService reimbursementService;
-    private ReimbursementTemplate reimbursementTemplate;
+    
     
     public ReimbursementDelegate() {
         super();
@@ -82,6 +82,7 @@ public class ReimbursementDelegate implements Delegate {
         case "POST": 
             String newReimbursement = RequestUtil.readBody(request);
             ReimbursementTemplate rt = om.readValue(newReimbursement, ReimbursementTemplate.class);
+            System.out.println(rt.toString());
             Reimbursement r = reimbursementService.submitReimbursement(rt);
             ResponseUtil.writeJSON(response, r);
             break;

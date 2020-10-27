@@ -30,7 +30,8 @@ public class ReimbursementService {
         int eid = Integer.valueOf(rt.getEid());
         double amount = Double.valueOf(rt.getAmount());
         String description = rt.getDescription();
-        Reimbursement r = new Reimbursement(0, amount, new Timestamp(System.currentTimeMillis()), null, description, null, eid, 0,1,subType);
+        byte[] receipt = rt.getReceipt();
+        Reimbursement r = new Reimbursement(0, amount, new Timestamp(System.currentTimeMillis()), null, description, receipt, eid, 0,1,subType);
         return r;
     }
     public List<Reimbursement> getAllReimbursements(int id) {
