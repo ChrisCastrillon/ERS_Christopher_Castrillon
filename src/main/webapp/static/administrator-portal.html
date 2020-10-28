@@ -169,7 +169,8 @@
 		let newStatusCell;
 		let newStatus;
 		let newResolvedCell;
-		let newResolved;	
+		let newResolved;
+		let newResolverID;	
 		let newEIDCell = newRow.insertCell(0);
 		let newReimbIDCell = newRow.insertCell(1);
 		let newSubmittedCell = newRow.insertCell(2);
@@ -225,7 +226,16 @@
 		receiptImage.style.marginTop="10px";
 		receiptImage.src = 'data:image/png;base64,' + item.receipt;
 		
-		let newResolverID = document.createTextNode(item.resolver);
+		switch(item.resolver) {
+			case 0:
+			newResolverID = document.createTextNode("none");
+			break;
+			default:
+			newResolverID = document.createTextNode(item.resolver);
+			break;
+
+		}
+		
 		// let statusSelector = document.getElementById('status');
 		
 		// newStatusCell.appendChild(newStatusSelecor);
@@ -255,6 +265,7 @@
 			
 
 		});
+		newResolverIDCell.appendChild(newResolverID);
 		// if(item.receipt == null ){
 		// 	// newReceiptCell.appendChild(document.createTextNode("NO RECEIPT AVAILABLE"));
 		// 	newReceiptCell.appendChild(showImageButton);
