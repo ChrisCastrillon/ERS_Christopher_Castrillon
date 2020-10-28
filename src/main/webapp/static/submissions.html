@@ -317,13 +317,20 @@
             let newType = document.createTextNode(reimbType);
             let newAmount = document.createTextNode("$"+reimbursementData.reimbAmount);
             let newDescription = document.createTextNode(reimbursementData.description);
-            let newReceipt = document.createTextNode("receipt");
+            // let newReceipt = document.createTextNode("receipt");
+            console.log("receipt image is: " + reimbursementData.receipt);
+            let receiptImage = document.createElement("img");
+            receiptImage.style.marginTop="10px";
+            receiptImage.src = 'data:image/png;base64,' + reimbursementData.receipt;
             // let newStatus = document.createTextNode(reimbursementData.statusId);
             // let newResolved = document.createTextNode(new Date(reimbursementData.resolveTimeStamp).toISOString());
             let newResolverID = document.createTextNode(reimbursementData.resolver);
             // let statusSelector = document.getElementById('status');
             
             // newStatusCell.appendChild(newStatusSelecor);
+            let showImageButton = document.createElement("button");
+            showImageButton.setAttribute("class", "btn btn-default");
+            showImageButton.textContent = "view";
 
             newEIDCell.appendChild(newEID);
             newReimbIDCell.appendChild(newReimbID);
@@ -331,7 +338,19 @@
             newTypeCell.appendChild(newType);
             newAmountCell.appendChild(newAmount);
             newDescriptionCell.appendChild(newDescription);
-            newReceiptCell.appendChild(newReceipt);
+            newReceiptCell.appendChild(showImageButton);
+            if(reimbursementData.receipt == null) {
+                showImageButton.disabled = true;
+            }
+            showImageButton.addEventListener("click", function() {
+                if(showImageButton.textContent == "view") {
+                    showImageButton.textContent = "hide";
+                    newReceiptCell.appendChild(receiptImage);
+                }else {
+                    showImageButton.textContent = "view";
+                    newReceiptCell.removeChild(receiptImage);
+                }
+            });
             newStatusCell.appendChild(newStatus);
             newResolvedCell.appendChild(newResolved);
             newResolverIDCell.appendChild(newResolverID);

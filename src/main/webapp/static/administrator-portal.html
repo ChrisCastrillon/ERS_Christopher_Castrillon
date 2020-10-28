@@ -223,7 +223,7 @@
 		console.log("receipt image is: " + item.receipt);
 		let receiptImage = document.createElement("img");
 		receiptImage.style.marginTop="10px";
-		receiptImage.src = 'data:image/pg;base64,' + item.receipt;
+		receiptImage.src = 'data:image/png;base64,' + item.receipt;
 		
 		let newResolverID = document.createTextNode(item.resolver);
 		// let statusSelector = document.getElementById('status');
