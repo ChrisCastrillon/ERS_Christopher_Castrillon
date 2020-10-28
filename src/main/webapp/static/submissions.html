@@ -116,7 +116,6 @@
                 uploadReceipt.click();
         });
         uploadReceipt.addEventListener("change", function() {
-            console.log(uploadReceipt.files);
             processImage();
             if (uploadReceipt.value) {
                 imageName.innerHTML = uploadReceipt.value;
@@ -146,22 +145,17 @@
         welcome.innerHTML += " " + currentUser;
 
         function processImage() {
-            console.log("in process image");
             let fileList = uploadReceipt.files;
-            console.log(fileList);
             let fileReader = new FileReader();
            
             if(fileReader && fileList && fileList.length) {
                 fileReader.readAsArrayBuffer(fileList[0]);
                 fileReader.onload = function() {
                     imageData = fileReader.result;
-                    console.log(imageData);
                     let array = new Uint8Array(imageData);
-                    console.log(array);
                     for(let i = 0; i < array.length; i++) {
                         byteArray.push(array[i]);
                     }
-                    console.log(byteArray);
                 };
             }
         }
@@ -181,9 +175,6 @@
 			}
         }
         async function submit() {
-            console.log("in function");
-            
-
             let subType;
             let radioElement = document.getElementsByName("submissionType");
             for (i = 0; i < radioElement.length; i++) {
@@ -213,7 +204,6 @@
                     "receipt": byteArray
                 }
             )
-            console.log(formData);
             try {
                 let response = await fetch("http://localhost:8080/ERS_Christopher_Castrillon/reimbursements", {
                     body: formData,
@@ -222,12 +212,10 @@
                     credentials: 'include'
                 });
                 let reimbursementData = await response.json();
-                console.log("data : " + JSON.stringify(reimbursementData));
                 // insertIntoTable(reimbursementData);
                 insertIntoTable(reimbursementData);
                 
             } catch (error) {
-                console.log(error);
                 alert("Failed to send form");
             }
             
@@ -291,16 +279,19 @@
 				newStatusCell = newRow.insertCell(7);
 				newStatus = document.createTextNode(statusType);
 				newStatusCell.appendChild(newStatus);
+                newStatusCell.style.backgroundColor = "rgb(242,234,203)";
 				break;
 				case 2:
 				newStatusCell = newRow.insertCell(7);
-				newStatus = document.createTextNode("approved");
+				newStatus = document.createTextNode(statusType);
 				newStatusCell.appendChild(newStatus);
+                newStatusCell.style.backgroundColor = "rgb(178, 219, 189)";
 				break;
 				case 3:
 				newStatusCell = newRow.insertCell(7);
-				newStatus = document.createTextNode("denied");
+				newStatus = document.createTextNode(statusType);
 				newStatusCell.appendChild(newStatus);
+                newStatusCell.style.backgroundColor = "rgb(219, 178, 178)";
 				break;
 			}
 			switch(reimbursementData.resolveTimeStamp){
@@ -323,7 +314,7 @@
             let newEID = document.createTextNode(reimbursementData.author);
             let newReimbID = document.createTextNode(reimbursementData.reimbId);
             let newSubmit = document.createTextNode(new Date(reimbursementData.submitTimeStamp).toISOString());
-            let newType = document.createTextNode(reimbursementData.type);
+            let newType = document.createTextNode(reimbType);
             let newAmount = document.createTextNode("$"+reimbursementData.reimbAmount);
             let newDescription = document.createTextNode(reimbursementData.description);
             let newReceipt = document.createTextNode("receipt");
