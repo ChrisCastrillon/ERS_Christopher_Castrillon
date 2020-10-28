@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimbursementService;
 import com.revature.templates.ReimbursementTemplate;
+import com.revature.templates.ReimbursementUpdateTemplate;
 import com.revature.util.RequestUtil;
 import com.revature.util.ResponseUtil;
 
@@ -87,8 +88,14 @@ public class ReimbursementDelegate implements Delegate {
             ResponseUtil.writeJSON(response, r);
             break;
         case "PUT":
+            System.out.println("put is called");
             String updateForm = RequestUtil.readBody(request);
-            
+            ReimbursementUpdateTemplate rut = om.readValue(updateForm, ReimbursementUpdateTemplate.class);
+            System.out.println("the reimbursement update template " + rut.toString());
+            Reimbursement reimb = reimbursementService.reimbursementUpdateFormToReimbursement(rut);
+            System.out.println("the reimbursement is" + reimb.toString());
+            ResponseUtil.writeJSON(response, reimb);
+            break;
             
         default:
             response.sendError(401);

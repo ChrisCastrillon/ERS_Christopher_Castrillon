@@ -79,6 +79,7 @@
 		}
 		function insertIntoEmployeeTable(account) {
 			let actionButton = document.createElement("button");
+			actionButton.setAttribute("class","btn btn-default");
 			let tableRef = document.getElementById("Accounts").getElementsByTagName('tbody')[0];
 			let newRow = tableRef.insertRow(tableRef.rows.length);
 			let newEIDCell = newRow.insertCell(0);

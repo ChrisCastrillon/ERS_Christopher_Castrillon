@@ -3,16 +3,16 @@ package com.revature.services;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
-import com.revature.models.Employee;
 import com.revature.models.Reimbursement;
+import com.revature.repositories.IEmployeeDAO;
 import com.revature.repositories.IReimbursementDAO;
 import com.revature.repositories.ReimbursementDAO;
 import com.revature.templates.ReimbursementTemplate;
+import com.revature.templates.ReimbursementUpdateTemplate;
 
 public class ReimbursementService {
     private IReimbursementDAO reimbursementDAO;
+
     
     
     public ReimbursementService() {
@@ -24,6 +24,15 @@ public class ReimbursementService {
     //for mocking
     public ReimbursementService(IReimbursementDAO reimbursementDAO) {
         this.reimbursementDAO = reimbursementDAO;
+    }
+    public  Reimbursement reimbursementUpdateFormToReimbursement(ReimbursementUpdateTemplate rut) {
+        int reimbId = Integer.valueOf(rut.getReimbId());
+        int resolver = Integer.valueOf(rut.getResolver());
+        int statusId = Integer.valueOf(rut.getStatusId());
+        Reimbursement r = reimbursementDAO.findById(reimbId);
+        r = new Reimbursement(reimbId, r.getReimbAmount(), r.getSubmitTimeStamp(), new Timestamp(System.currentTimeMillis()), r.getDescription(), r.getReceipt(),r.getAuthor(),resolver, statusId, r.getType()); //make a new reimbursement object and update it in the database
+        
+        return updateReimbursement(r);
     }
     public Reimbursement reimbursementFormToReimbursement(ReimbursementTemplate rt) {
         int subType = Integer.valueOf(rt.getSubType());
@@ -51,5 +60,9 @@ public class ReimbursementService {
             return null;
         }
         return r;
+    }
+    public Reimbursement updateReimbursement(Reimbursement r) {
+        Reimbursement reimb = reimbursementDAO.update(r);
+        return reimb;
     }
 }
