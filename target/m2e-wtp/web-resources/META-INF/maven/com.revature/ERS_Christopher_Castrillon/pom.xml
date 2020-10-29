@@ -10,6 +10,10 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+	<!-- necessary to have correct context path in out EC2's Tomcat server-->
+	<build>
+		<finalName>ERS_Christopher_Castrillon</finalName>
+	</build>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>

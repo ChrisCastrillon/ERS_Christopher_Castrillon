@@ -12,7 +12,7 @@
 	</properties>
 	<!-- necessary to have correct context path in out EC2's Tomcat server-->
 	<build>
-		<finalName>ERS_Christopher_Castrillon<finalName>
+		<finalName>ERS_Christopher_Castrillon</finalName>
 	</build>
 	<dependencies>
 		<dependency>
