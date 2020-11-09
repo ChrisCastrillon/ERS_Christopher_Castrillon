@@ -43,8 +43,8 @@ public class FrontController extends HttpServlet{
     @Override
     protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("CORS Filter leveraged");
-        
-        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:8080"); // Allow only same origin
+        //http://localhost:8080/
+        resp.setHeader("Access-Control-Allow-Origin", "http://ec2-18-212-188-152.compute-1.amazonaws.com:8085/"); // Allow only same origin
         
         resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
         // Allow specific HTTP Verbs
