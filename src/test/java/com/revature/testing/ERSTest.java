@@ -66,28 +66,28 @@ public class ERSTest {
       wait.until(ExpectedConditions.urlToBe("http://localhost:8080/ERS_Christopher_Castrillon/manage-accounts"));
       assertEquals(driver.getTitle(), ersma.title);  
   }
-  @Test(dependsOnMethods= {"confirmManageAccountsPage"})
-  public void confirmBackToReimbursements() {
-      ERSManageAccounts ersma = new ERSManageAccounts(this.driver);
-      ERSAdministratorPortal ersap = new ERSAdministratorPortal(this.driver);
-      try {
-          ersma.backToAllReimbursements();
-      }catch(UnhandledAlertException f) {
-          try {
-              Alert alert = driver.switchTo().alert();
-              String alertText = alert.getText();
-              System.out.println("Alert Data: " + alertText);
-              alert.accept();
-          }catch(NoAlertPresentException e) {
-              e.printStackTrace();
-          }
-      }
-      WebDriverWait wait = new WebDriverWait(driver, 20);
-      wait.until(ExpectedConditions.urlToBe("http://localhost:8080/ERS_Christopher_Castrillon/administrator-portal"));
-      assertEquals(driver.getTitle(),ersap.title);
-      
-      
-  }
+//  @Test(dependsOnMethods= {"confirmManageAccountsPage"})
+//  public void confirmBackToReimbursements() {
+//      ERSManageAccounts ersma = new ERSManageAccounts(this.driver);
+//      ERSAdministratorPortal ersap = new ERSAdministratorPortal(this.driver);
+//      try {
+//          ersma.backToAllReimbursements();
+//      }catch(UnhandledAlertException f) {
+//          try {
+//              Alert alert = driver.switchTo().alert();
+//              String alertText = alert.getText();
+//              System.out.println("Alert Data: " + alertText);
+//              alert.accept();
+//          }catch(NoAlertPresentException e) {
+//              e.printStackTrace();
+//          }
+//      }
+//      WebDriverWait wait = new WebDriverWait(driver, 20);
+//      wait.until(ExpectedConditions.urlToBe("http://localhost:8080/ERS_Christopher_Castrillon/administrator-portal"));
+//      assertEquals(driver.getTitle(),ersap.title);
+//      
+//      
+//  }
 //  @Test(dependsOnMethods= {"confirmERSAdminPage"})
 //  public void logoutWorks() {
 //      ERSAdministratorPortal ersap = new ERSAdministratorPortal(this.driver);
