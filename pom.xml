@@ -9,6 +9,9 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<sonar.projectKey>ChrisCastrillon_ERS_Christopher_Castrillon</sonar.projectKey>
+		<sonar.organization>chriscastrillon</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<!-- necessary to have correct context path in out EC2's Tomcat server -->
 	<build>
