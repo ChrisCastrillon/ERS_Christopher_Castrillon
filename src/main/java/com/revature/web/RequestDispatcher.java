@@ -25,7 +25,6 @@ public class RequestDispatcher {
         delegateMap.put("logout", new LogoutDelegate());
         delegateMap.put("employees", new EmployeeDelegate());
         delegateMap.put("reimbursements", new ReimbursementDelegate());
-        
         delegateMap.put("index", (req, resp) -> {
             req.getRequestDispatcher("/static/index.html").forward(req, resp);
             System.out.println("index has been retrieved");

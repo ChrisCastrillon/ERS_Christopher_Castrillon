@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="6" passed="5">
+<testng-results skipped="1" failed="1" ignored="0" total="7" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="5165" started-at="2020-11-09T12:41:56 EST" finished-at="2020-11-09T12:42:01 EST">
+  <suite name="Default suite" duration-ms="4358" started-at="2021-04-08T15:57:40 EDT" finished-at="2021-04-08T15:57:44 EDT">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="5165" started-at="2020-11-09T12:41:56 EST" finished-at="2020-11-09T12:42:01 EST">
+    <test name="Default test" duration-ms="4358" started-at="2021-04-08T15:57:40 EDT" finished-at="2021-04-08T15:57:44 EDT">
       <class name="com.revature.testing.ERSTest">
-        <test-method status="PASS" signature="beforeClassTest()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="beforeClassTest" is-config="true" duration-ms="3446" started-at="2020-11-09T12:41:56 EST" finished-at="2020-11-09T12:41:59 EST">
+        <test-method status="PASS" signature="beforeClassTest()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="beforeClassTest" is-config="true" duration-ms="2371" started-at="2021-04-08T15:57:40 EDT" finished-at="2021-04-08T15:57:42 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClassTest -->
-        <test-method status="PASS" signature="confirmHomePage()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="confirmHomePage" duration-ms="85" started-at="2020-11-09T12:41:59 EST" finished-at="2020-11-09T12:41:59 EST">
+        <test-method status="PASS" signature="confirmHomePage()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="confirmHomePage" duration-ms="65" started-at="2021-04-08T15:57:42 EDT" finished-at="2021-04-08T15:57:42 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- confirmHomePage -->
-        <test-method status="PASS" signature="loginWorks()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="loginWorks" duration-ms="461" started-at="2020-11-09T12:41:59 EST" depends-on-methods="com.revature.testing.ERSTest.confirmHomePage" finished-at="2020-11-09T12:42:00 EST">
+        <test-method status="PASS" signature="loginWorks()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="loginWorks" duration-ms="350" started-at="2021-04-08T15:57:42 EDT" depends-on-methods="com.revature.testing.ERSTest.confirmHomePage" finished-at="2021-04-08T15:57:43 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginWorks -->
-        <test-method status="PASS" signature="confirmERSAdminPage()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="confirmERSAdminPage" duration-ms="625" started-at="2020-11-09T12:42:00 EST" depends-on-methods="com.revature.testing.ERSTest.loginWorks" finished-at="2020-11-09T12:42:01 EST">
+        <test-method status="PASS" signature="confirmERSAdminPage()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="confirmERSAdminPage" duration-ms="1153" started-at="2021-04-08T15:57:43 EDT" depends-on-methods="com.revature.testing.ERSTest.loginWorks" finished-at="2021-04-08T15:57:44 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- confirmERSAdminPage -->
-        <test-method status="PASS" signature="goToManageAccounts()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="goToManageAccounts" duration-ms="158" started-at="2020-11-09T12:42:01 EST" depends-on-methods="com.revature.testing.ERSTest.confirmERSAdminPage" finished-at="2020-11-09T12:42:01 EST">
+        <test-method status="PASS" signature="goToManageAccounts()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="goToManageAccounts" duration-ms="126" started-at="2021-04-08T15:57:44 EDT" depends-on-methods="com.revature.testing.ERSTest.confirmERSAdminPage" finished-at="2021-04-08T15:57:44 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- goToManageAccounts -->
-        <test-method status="PASS" signature="confirmManageAccountsPage()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="confirmManageAccountsPage" duration-ms="23" started-at="2020-11-09T12:42:01 EST" depends-on-methods="com.revature.testing.ERSTest.goToManageAccounts" finished-at="2020-11-09T12:42:01 EST">
+        <test-method status="PASS" signature="logoutWorks()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="logoutWorks" duration-ms="116" started-at="2021-04-08T15:57:44 EDT" depends-on-methods="com.revature.testing.ERSTest.confirmERSAdminPage" finished-at="2021-04-08T15:57:44 EDT">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- confirmManageAccountsPage -->
-        <test-method status="FAIL" signature="confirmBackToReimbursements()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="confirmBackToReimbursements" duration-ms="231" started-at="2020-11-09T12:42:01 EST" depends-on-methods="com.revature.testing.ERSTest.confirmManageAccountsPage" finished-at="2020-11-09T12:42:01 EST">
+        </test-method> <!-- logoutWorks -->
+        <test-method status="FAIL" signature="confirmManageAccountsPage()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="confirmManageAccountsPage" duration-ms="81" started-at="2021-04-08T15:57:44 EDT" depends-on-methods="com.revature.testing.ERSTest.goToManageAccounts" finished-at="2021-04-08T15:57:44 EDT">
           <exception class="org.openqa.selenium.UnhandledAlertException">
             <message>
               <![CDATA[unexpected alert open: {Alert text : Failed to populate list!}
   (Session info: chrome=86.0.4240.75): Failed to populate list!
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'Nicholass-MBP.home', ip: 'fd22:4e39:e630:1:35b3:d7a2:8818:4668%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.15.7', java.version: '1.8.0_231'
+System info: host: 'Nicholass-MacBook-Pro.local', ip: 'fd22:4e39:e630:1:a06f:196b:88fe:6668%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.15.7', java.version: '1.8.0_231'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 86.0.4240.75, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: /var/folders/5r/p9px9xd17pg...}, goog:chromeOptions: {debuggerAddress: localhost:50860}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 2d0f0504ac66f276e1f69cf0a9c99b60]]>
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 86.0.4240.75, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: /var/folders/5r/p9px9xd17pg...}, goog:chromeOptions: {debuggerAddress: localhost:50451}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 817f997569033d6425cc5846119d178c]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : Failed to populate list!}
   (Session info: chrome=86.0.4240.75): Failed to populate list!
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'Nicholass-MBP.home', ip: 'fd22:4e39:e630:1:35b3:d7a2:8818:4668%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.15.7', java.version: '1.8.0_231'
+System info: host: 'Nicholass-MacBook-Pro.local', ip: 'fd22:4e39:e630:1:a06f:196b:88fe:6668%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.15.7', java.version: '1.8.0_231'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 86.0.4240.75, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: /var/folders/5r/p9px9xd17pg...}, goog:chromeOptions: {debuggerAddress: localhost:50860}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 2d0f0504ac66f276e1f69cf0a9c99b60
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 86.0.4240.75, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: /var/folders/5r/p9px9xd17pg...}, goog:chromeOptions: {debuggerAddress: localhost:50451}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 817f997569033d6425cc5846119d178c
 at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)
 at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
 at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
@@ -60,7 +60,7 @@ at org.openqa.selenium.remote.RemoteWebDriver.getCurrentUrl(RemoteWebDriver.java
 at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:109)
 at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:104)
 at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
-at com.revature.testing.ERSTest.confirmBackToReimbursements(ERSTest.java:86)
+at com.revature.testing.ERSTest.confirmManageAccountsPage(ERSTest.java:67)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -94,8 +94,40 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- org.openqa.selenium.UnhandledAlertException -->
           <reporter-output>
           </reporter-output>
+        </test-method> <!-- confirmManageAccountsPage -->
+        <test-method status="SKIP" signature="confirmBackToReimbursements()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="confirmBackToReimbursements" duration-ms="0" started-at="2021-04-08T15:57:44 EDT" depends-on-methods="com.revature.testing.ERSTest.confirmManageAccountsPage" finished-at="2021-04-08T15:57:44 EDT">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ERSTest.confirmBackToReimbursements()[pri:0, instance:com.revature.testing.ERSTest@3712b94] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ERSTest.confirmBackToReimbursements()[pri:0, instance:com.revature.testing.ERSTest@3712b94] depends on not successfully finished methods
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(ArrayList.java:1257)
+at org.testng.TestRunner.privateRun(TestRunner.java:764)
+at org.testng.TestRunner.run(TestRunner.java:585)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+at org.testng.TestNG.runSuites(TestNG.java:1069)
+at org.testng.TestNG.run(TestNG.java:1037)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
         </test-method> <!-- confirmBackToReimbursements -->
-        <test-method status="PASS" signature="afterClassTest()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="afterClassTest" is-config="true" duration-ms="0" started-at="2020-11-09T12:42:01 EST" finished-at="2020-11-09T12:42:01 EST">
+        <test-method status="PASS" signature="afterClassTest()[pri:0, instance:com.revature.testing.ERSTest@3712b94]" name="afterClassTest" is-config="true" duration-ms="2" started-at="2021-04-08T15:57:44 EDT" finished-at="2021-04-08T15:57:44 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClassTest -->

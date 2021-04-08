@@ -44,7 +44,6 @@ public class ReimbursementService {
         return r;
     }
     public List<Reimbursement> getAllReimbursements(int id) {
-        
         List<Reimbursement> allReimbursements = reimbursementDAO.findAllByEID(id);
         System.out.println("all of the reimbursements" + allReimbursements);
         return allReimbursements;

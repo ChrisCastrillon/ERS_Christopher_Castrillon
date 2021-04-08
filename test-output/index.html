@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">6 methods, 1 failed,   5 passed</span>
+                    <span class="method-stats">7 methods, 1 failed,  1 skipped,  5 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -104,10 +104,24 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.revature.testing.ERSTest" hash-for-method="confirmBackToReimbursements">confirmBackToReimbursements</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.revature.testing.ERSTest" hash-for-method="confirmManageAccountsPage">confirmManageAccountsPage</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title skipped">Skipped methods</span>
+                    <span class="show-or-hide-methods skipped">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods skipped suite-Default_suite"> (hide)</a> <!-- hide-methods skipped suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods skipped suite-Default_suite"> (show)</a> <!-- show-methods skipped suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content skipped suite-Default_suite">
+                      <span>
+                        <img width="3%" src="skipped.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.revature.testing.ERSTest" hash-for-method="confirmBackToReimbursements">confirmBackToReimbursements</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content skipped suite-Default_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -128,17 +142,17 @@
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.revature.testing.ERSTest" hash-for-method="confirmManageAccountsPage">confirmManageAccountsPage</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.revature.testing.ERSTest" hash-for-method="goToManageAccounts">goToManageAccounts</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.revature.testing.ERSTest" hash-for-method="loginWorks">loginWorks</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.revature.testing.ERSTest" hash-for-method="logoutWorks">logoutWorks</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -161,16 +175,16 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="confirmBackToReimbursements">
-                  </a> <!-- confirmBackToReimbursements -->
-                  <span class="method-name">confirmBackToReimbursements</span>
+                  <a name="confirmManageAccountsPage">
+                  </a> <!-- confirmManageAccountsPage -->
+                  <span class="method-name">confirmManageAccountsPage</span>
                   <div class="stack-trace">org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : Failed to populate list!}
   (Session info: chrome=86.0.4240.75): Failed to populate list!
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;Nicholass-MBP.home&apos;, ip: &apos;fd22:4e39:e630:1:35b3:d7a2:8818:4668%en0&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.15.7&apos;, java.version: &apos;1.8.0_231&apos;
+System info: host: &apos;Nicholass-MacBook-Pro.local&apos;, ip: &apos;fd22:4e39:e630:1:a06f:196b:88fe:6668%en0&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.15.7&apos;, java.version: &apos;1.8.0_231&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 86.0.4240.75, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: /var/folders/5r/p9px9xd17pg...}, goog:chromeOptions: {debuggerAddress: localhost:50860}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 2d0f0504ac66f276e1f69cf0a9c99b60
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 86.0.4240.75, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: /var/folders/5r/p9px9xd17pg...}, goog:chromeOptions: {debuggerAddress: localhost:50451}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 817f997569033d6425cc5846119d178c
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:120)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
 	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
@@ -181,7 +195,7 @@ Session ID: 2d0f0504ac66f276e1f69cf0a9c99b60
 	at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:109)
 	at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:104)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
-	at com.revature.testing.ERSTest.confirmBackToReimbursements(ERSTest.java:86)
+	at com.revature.testing.ERSTest.confirmManageAccountsPage(ERSTest.java:67)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -216,6 +230,43 @@ Session ID: 2d0f0504ac66f276e1f69cf0a9c99b60
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Default_suite-class-failed -->
+          <div class="suite-Default_suite-class-skipped">
+            <div class="main-panel-header rounded-window-top">
+              <img src="skipped.png"/>
+              <span class="class-name">com.revature.testing.ERSTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="confirmBackToReimbursements">
+                  </a> <!-- confirmBackToReimbursements -->
+                  <span class="method-name">confirmBackToReimbursements</span>
+                  <div class="stack-trace">java.lang.Throwable: Method ERSTest.confirmBackToReimbursements()[pri:0, instance:com.revature.testing.ERSTest@3712b94] depends on not successfully finished methods
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-skipped -->
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -238,13 +289,6 @@ Session ID: 2d0f0504ac66f276e1f69cf0a9c99b60
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="confirmManageAccountsPage">
-                  </a> <!-- confirmManageAccountsPage -->
-                  <span class="method-name">confirmManageAccountsPage</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
                   <a name="goToManageAccounts">
                   </a> <!-- goToManageAccounts -->
                   <span class="method-name">goToManageAccounts</span>
@@ -257,12 +301,19 @@ Session ID: 2d0f0504ac66f276e1f69cf0a9c99b60
                   <span class="method-name">loginWorks</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="logoutWorks">
+                  </a> <!-- logoutWorks -->
+                  <span class="method-name">logoutWorks</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Default_suite-class-passed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/private/var/folders/5r/p9px9xd17pgc13qp_xm2hy3w0000gp/T/testng-eclipse-551184192/testng-customsuite.xml</span>
+            <span class="header-content">/private/var/folders/5r/p9px9xd17pgc13qp_xm2hy3w0000gp/T/testng-eclipse--1971786115/testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -311,31 +362,35 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(6);
+data.addRows(7);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'confirmERSAdminPage')
 data.setCell(0, 2, 'com.revature.testing.ERSTest')
-data.setCell(0, 3, 625);
+data.setCell(0, 3, 1153);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'loginWorks')
 data.setCell(1, 2, 'com.revature.testing.ERSTest')
-data.setCell(1, 3, 461);
+data.setCell(1, 3, 350);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'confirmBackToReimbursements')
+data.setCell(2, 1, 'goToManageAccounts')
 data.setCell(2, 2, 'com.revature.testing.ERSTest')
-data.setCell(2, 3, 231);
+data.setCell(2, 3, 126);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'goToManageAccounts')
+data.setCell(3, 1, 'logoutWorks')
 data.setCell(3, 2, 'com.revature.testing.ERSTest')
-data.setCell(3, 3, 158);
+data.setCell(3, 3, 116);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'confirmHomePage')
+data.setCell(4, 1, 'confirmManageAccountsPage')
 data.setCell(4, 2, 'com.revature.testing.ERSTest')
-data.setCell(4, 3, 85);
+data.setCell(4, 3, 81);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'confirmManageAccountsPage')
+data.setCell(5, 1, 'confirmHomePage')
 data.setCell(5, 2, 'com.revature.testing.ERSTest')
-data.setCell(5, 3, 23);
+data.setCell(5, 3, 65);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'confirmBackToReimbursements')
+data.setCell(6, 2, 'com.revature.testing.ERSTest')
+data.setCell(6, 3, 0);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
@@ -373,33 +428,37 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">confirmHomePage</span>
-                <span class="method-start">3463 ms</span>
+                <span class="method-start">2386 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">loginWorks</span>
-                <span class="method-start">3587 ms</span>
+                <span class="method-start">2466 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">confirmERSAdminPage</span>
-                <span class="method-start">4070 ms</span>
+                <span class="method-start">2820 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">goToManageAccounts</span>
-                <span class="method-start">4697 ms</span>
+                <span class="method-start">3976 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">confirmManageAccountsPage</span>
-                <span class="method-start">4864 ms</span>
+                <span class="method-name">logoutWorks</span>
+                <span class="method-start">4104 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
+                <span class="method-name">confirmManageAccountsPage</span>
+                <span class="method-start">4225 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
                 <span class="method-name">confirmBackToReimbursements</span>
-                <span class="method-start">4895 ms</span>
+                <span class="method-start">4326 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">afterClassTest</span>
-                <span class="method-start">5132 ms</span>
+                <span class="method-start">4337 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
